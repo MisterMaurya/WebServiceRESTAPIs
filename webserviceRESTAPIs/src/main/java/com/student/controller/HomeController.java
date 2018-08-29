@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.student.DAO.Impl.StudentDAOImpl;
-import com.student.entity.Address;
 import com.student.entity.Student;
 
 @Controller
@@ -22,7 +21,7 @@ public class HomeController {
 
 	@InitBinder
 	public void initBuilder(WebDataBinder binder) {
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-mm-yyyy");
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		binder.registerCustomEditor(Date.class, "dob", new CustomDateEditor(simpleDateFormat, false));
 	}
 
@@ -38,17 +37,17 @@ public class HomeController {
 		if (!result.hasErrors()) {
 
 			Student student_info = new Student();
-			
-
 			student_info.setFirstName(student.getFirstName());
 			student_info.setLastName(student.getLastName());
 			student_info.setEmail(student.getEmail());
 			student_info.setPassword(student.getPassword());
 			student_info.setConfirmPassword(student.getConfirmPassword());
 			student_info.setGender(student.getGender());
+			System.out.println(student.getDob());
 			student_info.setDob(student.getDob());
+			System.out.println(student.getDob());
 			student_info.setMobile(student.getMobile());
-			/*student_info.setAddress(student.getAddress());*/
+			/* student_info.setAddress(student.getAddress()); */
 
 			StudentDAOImpl add = new StudentDAOImpl();
 			boolean b = add.saveStudent(student_info);

@@ -11,6 +11,28 @@ body
 {margin: 0px;
 padding: 0px;
 }
+h1{
+margin-top: 0px;
+padding-top: 10px;}
+table{
+
+    margin-top: 20px;
+    border-top-width: red;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    height: 280px;
+    
+
+}
+form{
+	margin-bottom: 20px;
+}
+div{
+    background-color: #FFF4F1;
+    width: 500px;
+    height: 400px;
+    margin-left: 400px;}
+
 </style>
 </head>
 <body>

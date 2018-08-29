@@ -8,7 +8,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 @Entity
+@JsonPropertyOrder({"firstName","email"})
+@JsonIgnoreProperties({"lastName","password","confirmPassword","gender","mobile"})
+
 public class Student {
 
 	@Id
