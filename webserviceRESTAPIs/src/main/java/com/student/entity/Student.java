@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -20,15 +22,18 @@ public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@Pattern(regexp="[A-Za-z]{3}[A-Za-z]*")
 	private String firstName;
 	private String lastName;
+	@Pattern(regexp="[a-zA-z][a-zA-Z0-9_.]*@[a-zA-Z]+([.][a-zA-Z]+)+")
 	private String email;
+	@Size(min = 6,max = 15/*, message = "Please enter password in between {min} to {max} chracter"*/)
 	private String password;
 	@Transient
 	private String confirmPassword;
 	private Date dob;
 	private String gender;
-
+	//@Pattern(regexp="(0|91)?[6-9][0-9]{9}")
 	private long mobile;
 	
 	/*@OneToOne(cascade = CascadeType.ALL)

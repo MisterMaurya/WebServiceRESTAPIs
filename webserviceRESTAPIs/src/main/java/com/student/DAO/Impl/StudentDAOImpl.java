@@ -36,10 +36,12 @@ public class StudentDAOImpl implements StudentDAO {
 		connect = new DBConnect();
 		try {
 			session = connect.getSession();
-
+			session.beginTransaction();
+			session.update(student);
+			session.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
-			return true;
+			return false;
 		} finally {
 			session.close();
 		}
@@ -75,7 +77,7 @@ public class StudentDAOImpl implements StudentDAO {
 			criteria.add(Restrictions.eq("firstName", firstName));
 			student_info = (Student) criteria.uniqueResult();
 			if (student_info == null)
-				System.out.println("Not Found");
+				System.out.println(firstName);
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();

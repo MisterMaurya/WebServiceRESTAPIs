@@ -3,6 +3,8 @@ package com.student.controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -32,7 +34,7 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public ModelAndView saveStudent(@ModelAttribute("student") Student student, BindingResult result) {
+	public ModelAndView saveStudent(@Valid @ModelAttribute("student") Student student, BindingResult result) {
 
 		if (!result.hasErrors()) {
 
